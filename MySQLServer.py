@@ -1,13 +1,16 @@
 import mysql.connector
 from mysql.connector import Error
 
-def create_databse():
+def create_database():
+    """Create the alx_book_store database if it does not already exist."""
     try:
+        # Establish connection to MySQL server
         connection = mysql.connector.connect(
             host='localhost',
             user='root',
             password='Bright@6124'
         )
+
         if connection.is_connected():
             cursor = connection.cursor()
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
@@ -20,8 +23,7 @@ def create_databse():
         if connection.is_connected():
             cursor.close()
             connection.close()
-            print("MySQL connection is closed.")
+            print("MySQL connection closed.")
 
 if __name__ == "__main__":
-    create_databse()
-
+    create_database()
